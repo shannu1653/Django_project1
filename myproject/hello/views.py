@@ -9,25 +9,31 @@ def contact_view(request):
         email = request.POST.get('email')
         message = request.POST.get('message')
 
-        # Email to admin
-        send_mail(
-            subject=f"New Contact from {name}",
-            message=f"Name: {name}\nEmail: {email}\nMessage:\n{message}",
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=['yourgmail@gmail.com'],
-            fail_silently=False,
-        )
+        # ✅ Try sending email to admin
+        try:
+            send_mail(
+                subject=f"New Contact from {name}",
+                message=f"Name: {name}\nEmail: {email}\nMessage:\n{message}",
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=['yourgmail@gmail.com'],
+                fail_silently=False,
+            )
+        except Exception as e:
+            print(f"Failed to send email to admin: {e}")
 
-        # Auto reply to user
-        send_mail(
-            subject="Thanks for contacting us!",
-            message=f"Hi {name},\n\nThank you for reaching out. We’ll get back to you soon!\n\n– Shannu Team",
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[email],
-            fail_silently=False,
-        )
+        # ✅ Try sending auto-reply to user
+        try:
+            send_mail(
+                subject="Thanks for contacting us!",
+                message=f"Hi {name},\n\nThank you for reaching out. We’ll get back to you soon!\n\n– Shannu Team",
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[email],
+                fail_silently=False,
+            )
+        except Exception as e:
+            print(f"Failed to send auto-reply: {e}")
 
-        # Success page with instant musical sound and pulsing tick
+        # ✅ Return success page with musical sound and pulsing tick
         return HttpResponse(f"""
 <!DOCTYPE html>
 <html>
@@ -87,8 +93,8 @@ def contact_view(request):
         <h2>Your message has been sent successfully!</h2>
     </div>
 
-    <!-- Modern loud musical sound -->
-    <audio id="successSound" autoplay volume="1.0">
+    <!-- ✅ Reliable loud musical sound -->
+    <audio id="successSound" autoplay>
         <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
     </audio>
 
@@ -104,7 +110,7 @@ def contact_view(request):
             tick.classList.remove('pulse');
         }});
 
-        // If autoplay blocked, try playing manually
+        // Try to play in case autoplay is blocked
         sound.play().catch(err => {{
             console.log("Audio playback blocked:", err);
         }});
