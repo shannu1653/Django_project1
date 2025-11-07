@@ -129,7 +129,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = 'pentashanmukha2002@gmail.com'           # your Gmail address
-EMAIL_HOST_PASSWORD = 'zfyx qnfq ztlp kgsq' # Gmail App Password (see instructions)
+EMAIL_HOST_PASSWORD = 'cotj cqxz aeys kcxc' # Gmail App Password (see instructions)
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 STATIC_URL = '/static/'
