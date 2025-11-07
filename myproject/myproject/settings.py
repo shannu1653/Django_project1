@@ -130,19 +130,7 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Email settings (Gmail example)
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-
-EMAIL_HOST_USER = 'pentashanmukha2002@gmail.com'           # your Gmail address
-EMAIL_HOST_PASSWORD = 'cotj cqxz aeys kcxc' # Gmail App Password (see instructions)
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-STATIC_URL = '/static/'
 
 import os
 STATICFILES_DIRS = [
@@ -150,3 +138,21 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+import os
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST = "smtp-relay.brevo.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+# ✅ Brevo SMTP login (NOT your Gmail)
+EMAIL_HOST_USER = "9b09cf001@smtp-brevo.com"
+
+# ✅ Brevo SMTP key
+EMAIL_HOST_PASSWORD = "M23mTv4ypCYHxZR0"
+
+# ✅ Sender email (must be verified in Brevo)
+DEFAULT_FROM_EMAIL = "pentashanmukha1653@gmail.com"
+

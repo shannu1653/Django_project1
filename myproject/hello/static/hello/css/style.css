@@ -1,54 +1,100 @@
+/* Background Gradient */
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
   margin: 0;
   padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  animation: fadeBg 8s infinite alternate ease-in-out;
 }
 
+/* Smooth background pulse */
+@keyframes fadeBg {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(1.2); }
+}
+
+/* Container Card */
 .container {
   max-width: 600px;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  padding: 20px;
+  width: 100%;
+  background: white;
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  animation: slideUp 0.9s ease;
+}
+
+/* Slide animation */
+@keyframes slideUp {
+  0% { transform: translateY(40px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
 h1 {
   color: #333;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-p.lead {
+.lead {
   color: #555;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-p.success {
-  color: green;
-  font-weight: bold;
-}
-
+/* Form styling */
 form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
-input, textarea {
+/* Inputs and textarea */
+input, textarea, select {
   width: 100%;
-  padding: 10px;
-  border-radius: 6px;
+  padding: 12px;
+  border-radius: 8px;
   border: 1px solid #ccc;
+  transition: 0.3s ease;
+  font-size: 15px;
 }
 
+/* Glow on focus */
+input:focus, textarea:focus, select:focus {
+  border-color: #2575fc;
+  box-shadow: 0 0 8px rgba(37, 117, 252, 0.4);
+  transform: scale(1.02);
+}
+
+/* Character counter */
+#charCount {
+  font-size: 14px;
+  color: #777;
+  margin-top: -8px;
+}
+
+/* Button */
 button {
-  background-color: #007bff;
-  color: white;
+  background: #2575fc;
+  padding: 12px;
   border: none;
-  padding: 10px 15px;
-  border-radius: 6px;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
   cursor: pointer;
+  transition: 0.3s ease;
 }
 
+/* Hover animation */
 button:hover {
-  background-color: #0056b3;
+  background: #1a5ed8;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(1.02);
 }
